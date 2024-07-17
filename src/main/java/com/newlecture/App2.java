@@ -35,6 +35,7 @@ public class App2 {
 			exams.add(exam1);
 //			System.out.println(exams.size());
 
+			// 같은게 exam 출력
 			System.out.println(exams.iterator().next());
 			System.out.println(exams.iterator().next());
 
