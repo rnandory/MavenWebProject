@@ -2,6 +2,7 @@ package com.newlecture.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import com.newlecture.web.entity.Exam;
 import com.newlecture.web.service.ExamService;
@@ -13,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/exam/list")
-public class List extends HttpServlet {
+public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -25,22 +26,13 @@ public class List extends HttpServlet {
 		
 		ExamService service = new ExamService();
 		
-		Exam[] exams = service.getList();
-//		for (Exam e : exams) {
-//			System.out.println(e);
-//		}
+		List<Exam> list = service.getList();
 		
-//		----------------------------------------------------
-		
-		String n = "최윤성";
-
-		req.setAttribute("list", exams);
+		req.setAttribute("list", list);
 
 		// /exam/list -> forward -> /WEB-INF/view/exam/list.jsp
 		req.getRequestDispatcher("/WEB-INF/view/exam/list.jsp").forward(req, resp);
 		//resp.sendRedirect("list.jsp");
 	}
-	
-
 
 }

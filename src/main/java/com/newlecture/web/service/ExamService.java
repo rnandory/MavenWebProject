@@ -2,6 +2,8 @@ package com.newlecture.web.service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.newlecture.web.entity.Exam;
@@ -9,12 +11,14 @@ import com.newlecture.web.entity.Exam;
 
 public class ExamService {
 
-	public Exam[] getList() throws IOException {
+	public List<Exam> getList() throws IOException {
 
-		Exam[] exams = new Exam[6];
+		List<Exam> list = new ArrayList<>();
 
 		FileInputStream fis = new FileInputStream("c:/res/data.csv");
 		Scanner scan = new Scanner(fis);
+
+		scan.nextLine(); // 컬럼명 버리기
 
 		for (int i = 0; scan.hasNextLine() && i < 6; i++) {
 
@@ -87,13 +91,13 @@ public class ExamService {
 			// total, avg, grade);
 //			String temp = String.format(row, name, kor, eng, math, total, avg, grade);
 
-			exams[i] = new Exam(name, kor, eng, math);
+			list.add(new Exam(name, kor, eng, math));
 		}
 
 		scan.close();
 		fis.close();
 
-		return exams;
+		return list;
 	}
 
 	public static boolean isNumeric(String str) {

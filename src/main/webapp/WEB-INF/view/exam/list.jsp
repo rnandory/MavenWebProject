@@ -1,6 +1,7 @@
 <%@page import="jakarta.servlet.jsp.tagext.Tag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -28,12 +29,12 @@
 			</thead>
 			<tbody>
 			
-			<c:forEach begin="0" end="5">
+			<c:forEach var="exam" items="${list}">
 				<tr>
-					<th><a href="detail">${list[1].name}</a></th>
-					<td></td>
-					<td></td>
-					<td></td>
+					<th><a href="detail">${exam.name}</a></th>
+					<td>${exam.kor}</td>
+					<td>${exam.eng}</td>
+					<td>${exam.math}</td>
 					<td>110</td>
 					<td>36.67</td>
 					<td>F</td>
