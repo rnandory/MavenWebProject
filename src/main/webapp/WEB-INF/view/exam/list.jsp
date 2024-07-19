@@ -1,8 +1,8 @@
 <%@page import="jakarta.servlet.jsp.tagext.Tag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,27 +24,45 @@
 					<td>총점</td>
 					<td>평균</td>
 					<td>학점</td>
-					
+
 				</tr>
 			</thead>
 			<tbody>
-			
-			<c:forEach var="exam" items="${list}">
-				<tr>
-					<th><a href="detail">${exam.name}</a></th>
-					<td>${exam.kor}</td>
-					<td>${exam.eng}</td>
-					<td>${exam.math}</td>
-					<td>110</td>
-					<td>36.67</td>
-					<td>F</td>
-				</tr>
-			</c:forEach>
-							
+
+				<c:forEach var="exam" items="${list}">
+					<tr>
+						<th><a href="detail">${exam.name}</a></th>
+						<td>${exam.kor}</td>
+						<td>${exam.eng}</td>
+						<td>${exam.math}</td>
+						<td>${exam.total}</td>
+						<td><fmt:formatNumber pattern="#.00" value="${exam.avg}" /></td>
+						<td>${exam.grade}</td>
+					</tr>
+				</c:forEach>
+
 			</tbody>
 		</table>
 	</section>
+
+	<div>${page}page</div>
 	
-	<div>1 page</div>
+	<nav id="pager">
+		<ul>
+			<li><a href="?p=1&c=빨  강&c=blue">1</a></li>
+			<li><a href="?p=2&c=b  lue">2</a></li>
+			<li><a href="?p=3&c=green">3</a></li>
+			<li><a href="?p=4&c=red">4</a></li>
+			<li><a href="?p=5&c=red">5</a></li>						
+		</ul>
+	</nav>
+
+	<form>
+		<div>
+			<label>이동할 페이지</label> <input name="p">
+		</div>
+		<button>확인</button>
+	</form>
+
 </body>
 </html>

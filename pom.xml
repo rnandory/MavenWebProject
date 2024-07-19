@@ -11,7 +11,7 @@
 	
 	<properties>
 	  <maven.compiler.source>21</maven.compiler.source>
-	  <maver.compiler.target>21</maver.compiler.target>
+	  <maven.compiler.target>21</maven.compiler.target>
   	</properties>
   	
 	<dependencies>

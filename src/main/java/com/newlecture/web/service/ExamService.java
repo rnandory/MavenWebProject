@@ -8,10 +8,13 @@ import java.util.Scanner;
 
 import com.newlecture.web.entity.Exam;
 
-
 public class ExamService {
 
 	public List<Exam> getList() throws IOException {
+		return getList(1);
+	}
+
+	public List<Exam> getList(int page) throws IOException {
 
 		List<Exam> list = new ArrayList<>();
 
@@ -19,6 +22,10 @@ public class ExamService {
 		Scanner scan = new Scanner(fis);
 
 		scan.nextLine(); // 컬럼명 버리기
+
+		// 출력할 페이지 이전 성적들 버리기
+		for (int i = 0; scan.hasNextLine() && i < 6 * (page - 1); i++)
+			scan.nextLine();
 
 		for (int i = 0; scan.hasNextLine() && i < 6; i++) {
 
