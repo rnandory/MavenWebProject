@@ -58,11 +58,29 @@
 	</nav>
 
 	<form>
+		<fieldset>
+			<legend>페이지 입력</legend>
+			<label>page</label> <input name="p">
+		</fieldset>
+		<fieldset>
+			<legend>좋아하는 색상</legend>
+			<label>빨강<input type="checkbox" name="c" value="red"></label>
+			<label>파랑<input type="checkbox" name="c" value="blue"></label>
+		</fieldset>
 		<div>
-			<label>이동할 페이지</label> <input name="p">
+			<button>확인</button>	
 		</div>
-		<button>확인</button>
 	</form>
-
+	
+	
+	<section>
+		<form method="post" enctype="multipart/form-data">
+			<fieldset>
+				<legend>파일업로드</legend>
+				<label>파일선택<input type="file" name="img" style="display:none;" multiple></label>
+				<button>업로드</button>
+			</fieldset>
+		</form>
+	</section>
 </body>
 </html>

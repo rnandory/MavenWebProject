@@ -1,6 +1,8 @@
 package com.newlecture.web.controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -8,12 +10,15 @@ import com.newlecture.web.entity.Exam;
 import com.newlecture.web.service.ExamService;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 @WebServlet("/exam/list")
+@MultipartConfig(maxFileSize = 20 * 1024 * 1024, maxRequestSize = 200 * 1024 * 1024)
 public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,5 +53,19 @@ public class ListController extends HttpServlet {
 		// /exam/list -> forward -> /WEB-INF/view/exam/list.jsp
 		req.getRequestDispatcher("/WEB-INF/view/exam/list.jsp").forward(req, resp);
 		// resp.sendRedirect("list.jsp");
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Part imgPart = req.getPart("img");
+		String imgName = imgPart.getSubmittedFileName();
+		InputStream is = imgPart.getInputStream();
+
+		String path = "c:/8th/WebWork/" + imgName;
+
+		FileOutputStream fos = new FileOutputStream(path);
+
+		for (int b = 0; (b = is.read()) != -1;)
+			fos.write(b);
 	}
 }
