@@ -82,5 +82,14 @@
 			</fieldset>
 		</form>
 	</section>
+	
+	<section>
+		<div>
+			<img src="/javaprj/notice/upload/고창청보리밭.jpg">
+		</div>
+		<div>
+			<a download href="/javaprj/notice/upload/고창청보리밭.jpg">다운로드</a>
+		</div>
+	</section>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.newlecture.web.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,11 +62,17 @@ public class ListController extends HttpServlet {
 		String imgName = imgPart.getSubmittedFileName();
 		InputStream is = imgPart.getInputStream();
 
-		String path = "c:/8th/WebWork/" + imgName;
+		String realPath = req.getServletContext().getRealPath("/notice/upload");
 
+		File pathFile = new File(realPath);
+		if (!pathFile.exists())
+			pathFile.mkdirs();
+
+		String path = realPath + File.separator + imgName;
 		FileOutputStream fos = new FileOutputStream(path);
 
-		for (int b = 0; (b = is.read()) != -1;)
-			fos.write(b);
+		byte[] buf = new byte[1024];
+		for (int size = 0; (size = is.read(buf)) != -1;)
+			fos.write(buf, 0, size);
 	}
 }
