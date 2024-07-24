@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.List;
 
 import com.newlecture.web.entity.Exam;
@@ -21,12 +20,19 @@ import jakarta.servlet.http.Part;
 @WebServlet("/exam/list")
 @MultipartConfig(maxFileSize = 20 * 1024 * 1024, maxRequestSize = 200 * 1024 * 1024)
 public class ListController extends HttpServlet {
+
+	ExamService service;
+
+	public ListController() {
+		service = new ExamService();
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; UTF-8");
-		PrintWriter out = resp.getWriter();
+//		resp.setCharacterEncoding("UTF-8");
+//		resp.setContentType("text/html; UTF-8");
+//		PrintWriter out = resp.getWriter();
 
 		// 칼라
 		String[] colors = {};
@@ -43,8 +49,6 @@ public class ListController extends HttpServlet {
 		String page_ = req.getParameter("p");
 		if (page_ != null)
 			page = Integer.parseInt(page_);
-
-		ExamService service = new ExamService();
 
 		List<Exam> list = service.getList(page);
 
