@@ -24,7 +24,9 @@ public class ListController extends HttpServlet {
 	ExamService service;
 
 	public ListController() {
-		service = new ExamService();
+//		Repository<Exam> repository = new JDBCExamRepository();
+//		service = new ExamService(repository);
+		service = context.getBean(service);// service = new ExamService(new JDBCExamRepository());
 	}
 
 	@Override

@@ -4,15 +4,17 @@ import java.io.IOException;
 import java.util.List;
 
 import com.newlecture.web.entity.Exam;
-import com.newlecture.web.repository.ExamRepository;
-import com.newlecture.web.repository.FileExamRepository;
+import com.newlecture.web.repository.Repository;
 
 public class ExamService {
 
-	ExamRepository repository;
+	Repository<Exam> repository;
 
-	public ExamService() {
-		repository = new FileExamRepository();
+	// Constructor Dependency Injection
+	public ExamService(Repository<Exam> repository) {
+		this.repository = repository;
+//		repository = new FileExamRepository();
+//		repository = new JDBCRepository();
 	}
 
 	public List<Exam> getList() throws IOException {

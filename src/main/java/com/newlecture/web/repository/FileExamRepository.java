@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import com.newlecture.web.entity.Exam;
 
-public class FileExamRepository implements ExamRepository {
+public class FileExamRepository implements Repository {
 
 	public List<Exam> findAll() throws IOException {
 		List<Exam> list = new ArrayList<>();
@@ -202,6 +202,18 @@ public class FileExamRepository implements ExamRepository {
 		} catch (NumberFormatException e) {
 		}
 		return false;
+	}
+
+	@Override
+	public int save() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
