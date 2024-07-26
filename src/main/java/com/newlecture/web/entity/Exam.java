@@ -1,5 +1,7 @@
 package com.newlecture.web.entity;
 
+import com.newlecture.annotations.Transient;
+
 public class Exam {
 	private String name;
 	private int kor;
@@ -30,14 +32,17 @@ public class Exam {
 		return kor;
 	}
 
+	@Transient
 	public int getTotal() {
 		return kor + eng + math;
 	}
 
+	@Transient
 	public double getAvg() {
 		return getTotal() / 3.0;
 	}
 
+	@Transient
 	public String getGrade() {
 		String grade = "F";
 		double avg = getAvg();
