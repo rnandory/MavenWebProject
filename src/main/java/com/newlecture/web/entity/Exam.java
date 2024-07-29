@@ -1,10 +1,12 @@
 package com.newlecture.web.entity;
 
+import com.newlecture.annotations.Precision;
 import com.newlecture.annotations.Transient;
 
 public class Exam {
 	private String name;
 	private int kor;
+	@Transient
 	private int eng;
 	private int math;
 
@@ -37,7 +39,7 @@ public class Exam {
 		return kor + eng + math;
 	}
 
-	@Transient
+	@Precision(val = 5)
 	public double getAvg() {
 		return getTotal() / 3.0;
 	}
