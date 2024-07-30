@@ -10,6 +10,10 @@ public class ExamService {
 
 	Repository<Exam> repository;
 
+	public ExamService() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// Constructor Dependency Injection
 	public ExamService(Repository<Exam> repository) {
 		this.repository = repository;
@@ -29,4 +33,9 @@ public class ExamService {
 
 		return list;
 	}
+
+	public void setRepository(Repository<Exam> repository) {
+		this.repository = repository;
+	}
+
 }
