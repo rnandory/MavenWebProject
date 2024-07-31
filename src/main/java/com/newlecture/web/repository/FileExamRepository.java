@@ -6,9 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Component;
+
 import com.newlecture.web.entity.Exam;
 
+@Component
 public class FileExamRepository implements Repository {
+
+	@Override
+	public String toString() {
+		try {
+			return "FileExamRepository [findAll()=" + findAll() + ", save()=" + save() + ", update()=" + update() + "]";
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public List<Exam> findAll() throws IOException {
 		List<Exam> list = new ArrayList<>();
