@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.newlecture.web.entity.Exam;
 import com.newlecture.web.service.ExamService;
@@ -21,8 +22,12 @@ public class IndexController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServletContext servletContext = req.getServletContext();
-		ApplicationContext context = (ApplicationContext) servletContext.getAttribute("context");
+//		ApplicationContext context = (ApplicationContext) servletContext.getAttribute("context");
+		
+		ApplicationContext context 
+		= WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
+		
 		ExamService service = context.getBean(ExamService.class);
 
 		List<Exam> list;
