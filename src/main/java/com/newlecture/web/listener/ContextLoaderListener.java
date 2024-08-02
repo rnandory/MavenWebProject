@@ -13,7 +13,7 @@ public class ContextLoaderListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 
-		System.out.println("톰캣 시작됐어?");
+		System.out.println("톰캣, 시작됐어?");
 
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-settings2.xml");
 
