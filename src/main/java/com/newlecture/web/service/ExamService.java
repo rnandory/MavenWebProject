@@ -3,9 +3,13 @@ package com.newlecture.web.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.newlecture.web.entity.Exam;
 import com.newlecture.web.repository.Repository;
 
+@Component
 public class ExamService {
 
 	Repository<Exam> repository;
@@ -15,6 +19,7 @@ public class ExamService {
 	}
 
 	// Constructor Dependency Injection
+	@Autowired
 	public ExamService(Repository<Exam> repository) {
 		this.repository = repository;
 //		repository = new FileExamRepository();
