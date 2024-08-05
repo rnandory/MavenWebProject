@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
+//@WebServlet("/index")
 public class IndexController extends HttpServlet {
 
 	@Override

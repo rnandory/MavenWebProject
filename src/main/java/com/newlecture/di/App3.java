@@ -7,7 +7,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newlecture.web.entity.Exam;
+import com.newlecture.web.repository.Repository;
 import com.newlecture.web.service.ExamService;
+
+import jakarta.servlet.http.HttpServlet;
 
 public class App3 {
 
@@ -17,7 +20,6 @@ public class App3 {
 		ExamService service = context.getBean(ExamService.class);
 		List<Exam> list = service.getList();
 		System.out.println(list);
-
 	}
 
 }
