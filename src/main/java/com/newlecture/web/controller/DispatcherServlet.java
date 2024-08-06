@@ -21,9 +21,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/", loadOnStartup = 1, initParams = {
-		@WebInitParam(name = "path", value = "/WEB-INF/app.properties"),
-		@WebInitParam(name = "spring", value = "/WEB-INF/spring-dispatcher.xml") })
+//@WebServlet(urlPatterns = "/", loadOnStartup = 1, initParams = {
+//		@WebInitParam(name = "path", value = "/WEB-INF/app.properties"),
+//		@WebInitParam(name = "spring", value = "/WEB-INF/spring-dispatcher.xml") })
 public class DispatcherServlet extends HttpServlet {
 
 //	private Properties props;

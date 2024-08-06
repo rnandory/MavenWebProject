@@ -17,7 +17,7 @@
                         
         
         <property name="java-output-path" value="/javaprj/target/classes"/>
-        <property name="context-root" value="/"/>
+        <property name="context-root" value="javaprj"/>
                     
     
     </wb-module>
